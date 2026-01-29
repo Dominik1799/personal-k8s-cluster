@@ -1,0 +1,27 @@
+# helm get values traefik -n kube-system -o yaml > traefik-current-values.yaml
+deployment:
+  podAnnotations:
+    prometheus.io/port: "8082"
+    prometheus.io/scrape: "true"
+global:
+  systemDefaultRegistry: ""
+image:
+  repository: rancher/mirrored-library-traefik
+  tag: 3.5.1
+priorityClassName: system-cluster-critical
+providers:
+  kubernetesIngress:
+    publishedService:
+      enabled: true
+service:
+  ipFamilyPolicy: PreferDualStack
+tolerations:
+- key: CriticalAddonsOnly
+  operator: Exists
+- effect: NoSchedule
+  key: node-role.kubernetes.io/control-plane
+  operator: Exists
+# this was added to the default values
+additionalArguments:
+  - "--entryPoints.web.http.redirections.entryPoint.to=websecure"
+  - "--entryPoints.web.http.redirections.entryPoint.scheme=https"
