@@ -6,5 +6,6 @@ Install the following resources in this order (check out each directory for inst
 1. cert-manager
 2. traefik (comes pre-installed with k3s, just needs adjusting)
 3. flux
-4. postgresql
+4. sealed-secrets
+5. postgresql
 
