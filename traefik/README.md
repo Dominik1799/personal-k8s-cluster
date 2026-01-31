@@ -1,3 +1,11 @@
+Just create global http -> https redirect:
+
+```
+kubectl apply -f traefik-middleware.yaml
+```
+
+
+## If custom config is needed (by default, this is not needed)
 First, get current yaml values:
 
 ```
