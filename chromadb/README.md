@@ -1,0 +1,1 @@
+create and operate same way as postgresql. For instructions, check out that directory readme
